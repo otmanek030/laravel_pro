@@ -2,39 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function product()
+    // Afficher le formulaire et les produits
+    public function index()
     {
-        return view("layout.product");
+        $products = Product::all(); // Récupérer tous les produits
+        return view('product', compact('products'));
     }
 
-    public function productPost(Request $request)
+    // Ajouter un nouveau produit
+    public function store(Request $request)
     {
         $request->validate([
-            'product_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Fixed validation key
+            'pro_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $path = 'assets/image';
-            $file->move(public_path($path), $fileName);
+        $file = $request->file('image');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('public/products/', $fileName);
 
-            $imagePath = $path . '/' . $fileName;
+          // Debug: Check file path
+          if ($path) {
+            echo "File stored at: " . $path;
         } else {
-            $imagePath = null;
+            echo "Failed to store file.";
         }
 
-        \App\Livewire\Product::create([
-            'product_name' => $request->product_name,
-            'image' => $imagePath,
+        Product::create([
+            'name' => $request->input('pro_name'),
+            'photo' => $fileName,
         ]);
 
-        return redirect('/product')->with('status', 'Product added successfully!');
+        return redirect()->route('product.index');
     }
+
 }

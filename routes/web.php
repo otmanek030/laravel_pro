@@ -1,45 +1,40 @@
 
 <?php
 use App\Http\Controllers\Authcontroller;
-use App\Http\Controllers\product_cont;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\shopController;
 use App\Livewire\Aboutus;
 use App\Livewire\Contact;
 use App\Livewire\Home;
-use App\Livewire\HomePage;
 use App\Livewire\login;
 use App\Livewire\Open;
-use App\Livewire\Product;
 use App\Livewire\service;
-use App\Livewire\shop;
 use App\Livewire\signin;
 use App\Livewire\Users;
-use App\Models\User;
-use App\View\Components\signinLayout;
+use App\Models\User;;
 use Illuminate\Support\Facades\Route;
-
-// Route::get('/', HomePage::class);
-Route::middleware("auth")->group(function(){
-    Route::view('/', "App")->name("home");
-});
+use App\Http\Controllers\ProductController;
 
 Route::get('/users', Users::class);
-Route::get('/shop', shop::class);
 Route::get('/aboutus', Aboutus::class);
-Route::get('/contact', Contact::class);
 Route::get('/service', Service::class);
 Route::get('/signin', signin::class);
 Route::get('/login1', login::class);
 
-Route::get('/home', Home::class);
-
 Route::get('/open', Open::class);
-// Route::get('/product', Product::class);
-
-use App\Http\Controllers\ProductController;
 
 
-Route::get('/product', [ProductController::class, 'product'])->name('product');
-Route::post('/product', [ProductController::class, 'productPost'])->name('product.post');
+Route::get('/contact', [contactController::class, 'index'])->name('contact.index');
+// Route pour ajouter un produit
+Route::post('/contact', [contactController::class, 'store'])->name('contact.store');
+
+Route::get('/shop', [shopController::class, 'index'])->name('shop.index');
+
+
+// Route pour afficher les produits et le formulaire
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+// Route pour ajouter un produit
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 
 
 Route::get('/login', [AuthController::class, "login"])->name('login');

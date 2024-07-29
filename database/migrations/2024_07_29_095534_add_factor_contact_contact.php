@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Laravel\Fortify\Fortify;
 
 return new class extends Migration
 {
@@ -11,10 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('product_name');
-            $table->string('image')->nullable();
+        Schema::table('contact', function (Blueprint $table) {
+            $table->text('comment')
+                ->after('email')
+                ->nullable();
+
 
         });
     }
@@ -24,6 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::table('contact', function (Blueprint $table) {
+            $table->dropColumn(array_merge([
+                'comment',
+            ]));
+        });
     }
 };

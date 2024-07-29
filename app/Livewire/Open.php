@@ -2,15 +2,14 @@
 
 namespace App\Livewire;
 
-
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 #[Layout('layout.open')]
-class Open extends Component
+class open extends Component
 {
     public function render()
     {
-        return view('livewire.open');
+        return view('livewire.Open');
     }
 }
