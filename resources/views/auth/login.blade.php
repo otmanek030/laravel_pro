@@ -3,7 +3,7 @@
 @section("title", "Login")
 
 @section("content")
-    <div class="container">
+   <div class="wrapper">
         <div id="form">
             @if(session()->has("success"))
                 <div class="alert alert-success">
@@ -15,30 +15,55 @@
                     {{ session()->get("error") }}
                 </div>
             @endif
-            <h1 id="heading">Login Form</h1>
+            <h2 id="heading">Login Form</h2>
             <form name="form" action="{{ route('login.post') }}" method="POST" onsubmit="return isValid();">
                 @csrf
-                <div class="mb-3">
-                    <label for="user" class="form-label">Enter Username/Email:</label>
-                    <input type="text" id="user" name="user" class="form-control" required>
+                <div class="input-field">
+                    <input type="text" id="user" name="user" required>
+                    <label for="user" >Enter your email</label>
                 </div>
-                <div class="mb-3">
-                    <label for="pass" class="form-label">Password:</label>
-                    <input type="password" id="pass" name="pass" class="form-control" required>
+                <div class="input-field">
+                    <input type="password" id="pass" name="pass"  required>
+                    <label for="pass">Enter your password</label>
                 </div>
-                <button type="submit" id="btn" class="btn btn-primary">Login</button>
+                <div class="forget">
+                    <label for="remember">
+                      <input type="checkbox" id="remember">
+                      <p>Remember me</p>
+                    </label>
+                </div>
+                <button type="submit" id="btn">Login</button>
             </form>
         </div>
     </div>
 
-    <script>
-        function isValid() {
-            var user = document.forms["form"]["user"].value;
-            if (user.trim() === "") {
-                alert("Enter username or email!");
-                return false;
-            }
-            return true;
-        }
-    </script>
+
+
 @endsection
+
+{{-- <body>
+  <div class="wrapper">
+    <form action="#">
+      <h2>Login</h2>
+        <div class="input-field">
+        <input type="text" required>
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+ --}}

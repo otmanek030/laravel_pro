@@ -28,13 +28,18 @@ Route::get('/contact', [contactController::class, 'index'])->name('contact.index
 // Route pour ajouter un produit
 Route::post('/contact', [contactController::class, 'store'])->name('contact.store');
 
+//for the shop
 Route::get('/shop', [shopController::class, 'index'])->name('shop.index');
+Route::post('/shop/select/{id}', [ShopController::class, 'select'])->name('shop.select');
 
-
-// Route pour afficher les produits et le formulaire
+// for the products
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-// Route pour ajouter un produit
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::post('/products/store', 'ProductController@store')->name('products.store');
 
 
 Route::get('/login', [AuthController::class, "login"])->name('login');
@@ -44,14 +49,6 @@ Route::post('/login', [Authcontroller::class,"loginPost"])
 Route::get('/signup', [Authcontroller::class, "signup"])->name('signup');
 Route::post('/signup', [AuthController::class, "signupPost"])   ->name('signup.post');
 
-
-// Route::get('/register', [AuthController::class,"login"]);
-
-
-Route::get('/dbconn', function () {
-    dd(User::factory()->create(2));
-    return view('dbconn');
-});
 
 Route::middleware([
     'auth:sanctum',

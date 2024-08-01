@@ -16,6 +16,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'photo',
+        'price',
     ];
 
     // Définir les attributs qui doivent être cachés lors de la conversion en tableau ou JSON
