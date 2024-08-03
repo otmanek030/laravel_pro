@@ -28,13 +28,15 @@ text-align: center;
 .btn-primary {
 border-radius: 50px;
 width: 120px;
-background-color: #2d4e2d;
+height: 40px;
+background-color: #447444;
 border: none;
 color: white;
+margin-top: 7px;
 }
 
 .btn-primary:hover {
-background-color: black;
+background-color: rgba(145, 115, 40, 0.681);
 }
 
 /* Sidebar Styles */
@@ -127,19 +129,6 @@ justify-content: center;
 gap: 70px;
 }
 
-.button-75 {
-padding: 10px;
-background-color: #2d4e2d;
-color: white;
-border: none;
-cursor: pointer;
-border-radius: 5px;
-}
-
-.button-75:hover {
-background-color: #648064;
-}
-
 .form {
 margin-top: 40px;
 padding: 20px;
@@ -158,17 +147,6 @@ border: 1px solid #ccc;
 box-sizing: border-box;
 }
 
-.form button {
-background-color: #2d4e2d;
-color: rgb(220, 186, 186);
-border: none;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-.form button:hover {
-background-color: #648064;
-}
 .counter-container {
     display: flex;
     align-items: center;
@@ -201,4 +179,3 @@ background-color: #648064;
     font-size: 18px;
     margin: 0 10px;
 }
-

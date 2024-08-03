@@ -5,15 +5,15 @@
         position: fixed;
         z-index: 9999; /* Ensure it is on top of other elements */
         left: 0;
-        top: o;
+        top: 0;
         width: 100%;
         height: 100%;
         overflow: hidden; /* Prevent scrolling */
         background-color: rgba(0, 0, 0, 0.5);
     }
 
-     /* Modal content box */
-     .modal-content {
+    /* Modal content box */
+    .modal-content {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -27,19 +27,20 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         box-sizing: border-box; /* Include padding and border in element's total width and height */
     }
+
     /* Close button */
     .close {
         color: #aaa;
         float: right;
         font-size: 28px;
         font-weight: bold;
+        cursor: pointer;
     }
 
     .close:hover,
     .close:focus {
         color: #000;
         text-decoration: none;
-        cursor: pointer;
     }
 
     /* Form styles */
@@ -89,13 +90,32 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h5 class="modal-title">New Product</h5>
-        <form class="form" action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="cardForm" action="{{ route('contact.store') }}" method="POST">
             @csrf
-            <input type="text" id="name" name="name" placeholder="Product Name" required>
+            <input type="text" id="fullName" placeholder="Enter full name" name="full_name" required>
             <input type="email" id="email" placeholder="Enter email" name="email" required>
             <input type="tel" id="tel" placeholder="phone number" name="tel" required>
             <textarea id="comment" placeholder="Enter paragraph text" name="comment" required></textarea>
-            <button type="submit">Save</button>
+            <button type="submit">submit</button>
         </form>
     </div>
 </div>
+
+<script>
+    // Function to open the modal
+    function openModal() {
+        document.getElementById('ModalCreate').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('ModalCreate').style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('ModalCreate')) {
+            closeModal();
+        }
+    }
+</script>

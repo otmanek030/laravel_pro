@@ -13,7 +13,7 @@ class ShopController extends Controller
         $products = Product::all(); // Retrieve all products
         $selectedProducts = session('selected_products', []); // Get selected products from session
         $totalPrice = array_sum(array_column($selectedProducts, 'price')); // Calculate the total price
-        return view('shop', compact('products', 'selectedProducts', 'totalPrice'));
+        return view('users/shop', compact('products', 'selectedProducts', 'totalPrice'));
     }
 
     // Handle product selection

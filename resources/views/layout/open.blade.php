@@ -12,15 +12,17 @@
             include public_path('assets/php/myphp.php');
         @endphp
     </div>
+
     <div class="up">
         <div class="title">
             <H1>Herbal Green</H1>
         </div>
         <div class="sub">
-             <p class="para">Green presents a curated collection of preserved plant specimens, highlighting nature's beauty and
+            <p class="para">Green presents a curated collection of preserved plant specimens, highlighting nature's
+                beauty and
                 diversity in one unique herbarium.</p>
 
-          {{-- <button class="btn">signup</button> --}}
+            {{-- <button class="btn">signup</button> --}}
         </div>
 
         <style>
@@ -54,6 +56,7 @@
                 right: 56px;
                 left: 350px;
             }
+
             /* .btn{
                 top: 15%;
                 left: 100px;
@@ -71,7 +74,8 @@
                 border-radius: 15px;
                 font-size: 17px
             }
-            .para{
+
+            .para {
                 text-align: center;
             }
 

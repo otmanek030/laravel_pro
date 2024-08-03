@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/css/shop.css') }}">
+
     <style>
     body {
         font-family: "Libre Baskerville", serif;
@@ -34,6 +35,7 @@
             <h1>Welcome to our shop</h1>
             <hr>
         </div>
+
         <div class="produit">
             @foreach ($products as $product)
                 <div class="card" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-photo="{{ asset('storage/products/' . $product->photo) }}">
@@ -69,7 +71,6 @@
                     </tr>
                 </thead>
                 <tbody id="selected-products-body">
-                    <!-- Selected products will be inserted here by JavaScript -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -78,6 +79,10 @@
                     </tr>
                 </tfoot>
             </table>
+            <div class="butt">
+            <button class="btn-primary select-product" onclick="valider()"><span class="select">valider</span></button>
+            </div>
+
         </div>
 
         <!-- Toggle Sidebar Button -->
@@ -154,7 +159,12 @@
             totalPriceElement.textContent = `${totalPrice.toFixed(2)} MAD`;
         }
 
+
+
+
+
     </script>
+
 </body>
 
 </html>
